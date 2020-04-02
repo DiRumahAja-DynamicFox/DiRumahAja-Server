@@ -4,7 +4,6 @@ class MemeAPIController {
     static getMeme(req, res, next) {
         axios.get(`https://meme-api.herokuapp.com/gimme`)
             .then((result) => {
-                console.log(result.data)
                 const memedata = result.data
                 return res.status(200).send({ memedata })
             })
@@ -18,7 +17,7 @@ class MemeAPIController {
         let subreddit = req.params.subreddit
         axios.get(`https://meme-api.herokuapp.com/gimme/${subreddit}`)
             .then((result) => {
-                return res.status(200).json({ data: result })
+                return res.status(200).json({ data: result.data })
             })
 
         .catch((err) => {
