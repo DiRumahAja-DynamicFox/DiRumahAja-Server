@@ -4,7 +4,8 @@ class MemeAPIController {
     static getMeme(req, res, next) {
         axios.get(`https://meme-api.herokuapp.com/gimme`)
             .then((result) => {
-                return res.status(200).json({ data: result.data })
+                const memedata = result.data
+                return res.status(200).send({ memedata })
             })
 
         .catch((err) => {
