@@ -1,9 +1,7 @@
 const router = require('express').Router()
-const MemeAPIController = require('../controllers/meme')
+const RecipeAPIController = require('../controllers/recipe')
     // const authentication = require('../middlewares/authentication')
 
 // router.use(authentication)
-router.get('/', MemeAPIController.getMeme)
-router.get('/:subreddit', MemeAPIController.getSubredditMeme)
-
+router.get('/', RecipeAPIController.getRecipe)
 module.exports = router
