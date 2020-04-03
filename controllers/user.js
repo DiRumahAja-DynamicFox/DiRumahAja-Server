@@ -19,7 +19,7 @@ class Controller {
             })
             .catch(err => {
                 return next({
-                    name: 'InternalServerError',
+                    name: 'SequelizeValidationError',
                     errors: [{ msg: err}]
                 })
             })
