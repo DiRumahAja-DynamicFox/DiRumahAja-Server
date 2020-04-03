@@ -4,13 +4,20 @@ class Controller {
     static findAll(req, res, next) {
         Favorite.findAll({
             where: {
-                id: req.currentUserId
-            }, 
-            include: [ User ],
+                UserId: req.currentUserId
+            },
             order: [
                 ['createdAt', 'ASC']
             ]
         })
+        .then(result => {
+            return res.status(200).json({
+                Favorites: result
+            })
+        })
+        .catch(err => {
+            return next(err)
+        }) 
     }
 
     static create(req, res, next) {
@@ -28,7 +35,7 @@ class Controller {
             .catch(err => {
                 return next({
                     name: "InternalServerError",
-                    errors: [{ msg: err }]
+                    errors: [{ msg: err }] 
                 })
             })
     }
@@ -38,18 +45,18 @@ class Controller {
             where: {
                 id: req.params.id
             }
-                .then(result => {
-                    return res.status(200).json(({
-                        msg: "Favorite Deleted"
-                    }))
-                })
-                .catch(err => {
-                    return next({
-                        name: "InternalServerError",
-                        errors: [{ msg: err }]
-                    })
-                })
         })
+            .then(result => {
+                return res.status(200).json(({
+                    msg: "Favorite Deleted"
+                }))
+            })
+            .catch(err => {
+                return next({
+                    name: "InternalServerError",
+                    errors: [{ msg: err }]
+                })
+            })
     }
 }
 
