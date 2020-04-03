@@ -1,9 +1,9 @@
 const router = require('express').Router()
-const RecipeAPIController = require('../controllers/recipe')
+const MusicAPIController = require('../controllers/music')
     // const authentication = require('../middlewares/authentication')
 
 // router.use(authentication)
-router.get('/', RecipeAPIController.getRecipe)
-router.get('/:id', RecipeAPIController.getRecipe)
+router.get('/', MusicAPIController.getMusic)
+router.get('/search', MusicAPIController.getMusicBySearch)
 
 module.exports = router
