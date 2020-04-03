@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       unique: {
         args: true,
-        msg: "Email already exist"
+        msg: "Email Already Exist"
       },
       validate: {
         notNull: {
@@ -24,8 +24,7 @@ module.exports = (sequelize, DataTypes) => {
             throw new Error("Email Cannot Be Empty ")
           }
         }
-      },
-      unique: true
+      }
     },
     password: {
       type: DataTypes.STRING,
