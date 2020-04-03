@@ -65,11 +65,12 @@ class Controller {
     }
 
     static googleSign(req, res, next) {
-        const client = new OAuth2Client(process.env.CLIENT_ID);
         let email = ''
+        const client = new OAuth2Client(process.env.CLIENT_ID);
+
         client.verifyIdToken({
-            idToken : id_token,
-            audience : process.env.CLIENT_ID
+            idToken: req.body.id_token,
+            audience: process.env.CLIENT_ID
         })
             .then(ticket => {
                 email = ticket.getPayload().email
