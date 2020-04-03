@@ -13,12 +13,20 @@ app.use('/', routes)
 app.use( (err, req, res, next) => {
     switch (err.name) {
         case "SequelizeValidationError":
-            const errors = err.errors.map( el => { msg: el.msg })
-            return res.status(400).json({
-                code: 400,
-                type: "Bad Request",
-                errors
-            })
+            if (err.errors[0].msg.errors) {
+                const errors = err.errors[0].msg.errors.map( el => ({ msg: el.message }))
+                return res.status(400).json({
+                    code: 400,
+                    type: "Bad Request",
+                    errors
+                })
+            } else {
+                return res.status(400).json({
+                    code: 400,
+                    type: "Bad Request",
+                    errors: err.errors
+                })
+            }
 
         case "BadRequest":
             return res.status(400).json({
