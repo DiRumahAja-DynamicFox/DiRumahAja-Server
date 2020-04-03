@@ -1,0 +1,19 @@
+[
+    {
+        "email": "a@a.com",
+        "password": "$2a$10$M43VC8/AQLpc1/1lPYlJW.301eEM.SqVlQrIjUWdM5PrZGKDIwAh6"
+    }, 
+    {
+        "email": "b@b.com",
+        "password": "$2a$10$M43VC8/AQLpc1/1lPYlJW.301eEM.SqVlQrIjUWdM5PrZGKDIwAh6"
+    }, 
+    {
+        "email": "c@c.com",
+        "password": "1"
+    }, 
+    {
+        "email": "d@d.com",
+        "password": "1"
+    }
+    
+]
