@@ -2,12 +2,13 @@ const axios = require('axios')
 
 class RecipeAPIController {
     static getRecipe(req, res, next) {
-        const name = req.query.name
-        axios.get(`http://www.recipepuppy.com/api/?q=${name}`)
+        let page = 1
+        if (req.params.id) page = req.params.id
+
+        axios.get(`http://www.recipepuppy.com/api/?p=${page}`)
             .then((result) => {
-                console.log(result.data)
-                const data = result.data
-                return res.status(200).json({ data })
+                const recipedata = result.data
+                return res.status(200).json({ data: recipedata.results })
             })
             .catch((err) => {
                 return next(err)
