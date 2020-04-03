@@ -7,8 +7,24 @@ module.exports = (sequelize, DataTypes) => {
   }
 
   Favorite.init({
-    url: DataTypes.STRING,
-    UserId: DataTypes.INTEGER
+    url: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull: {
+          msg: "Please Enter Url"
+        }
+      }
+    },
+    UserId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        notNull: {
+          msg: "Please Enter UserId"
+        }
+      }
+    }
   }, {
     sequelize,
     modelName: "Favorite" 

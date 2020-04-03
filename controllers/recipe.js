@@ -5,7 +5,6 @@ class RecipeAPIController {
         const name = req.query.name
         axios.get(`http://www.recipepuppy.com/api/?q=${name}`)
             .then((result) => {
-                console.log(result.data)
                 const data = result.data
                 return res.status(200).json({ data })
             })
